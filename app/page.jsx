@@ -87,7 +87,299 @@ const Presentation = () => {
                 </div>
             )
         },
-        // 3. DESCARGAS HIPERVISOR
+        // 3. ¿QUÉ ES UN HYPERVISOR?
+        {
+            id: 'hypervisor-concept',
+            title: '¿Qué es un Hypervisor?',
+            subtitle: 'El motor detrás de la virtualización',
+            icon:
+                <Server size={48} className="text-blue-400" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-center text-gray-300">
+                        Un hypervisor es el software que permite crear y ejecutar máquinas virtuales. Es como el director de orquesta que controla todos los recursos.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* HYPERVISOR */}
+                        <div className="bg-slate-800 p-5 rounded-xl border-l-4 border-blue-500">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Server className="text-blue-400" />
+                                <h4 className="font-bold text-blue-400">Hypervisor (Virtualización)</h4>
+                            </div>
+                            <ul className="text-sm text-gray-300 space-y-2">
+                                <li>• Crea un sistema operativo <strong>completo</strong> virtual</li>
+                                <li>• Incluye su propio kernel (núcleo del OS)</li>
+                                <li>• Más aislamiento y seguridad</li>
+                                <li>• Consume más recursos (RAM, CPU)</li>
+                                <li>• Ejemplos: VirtualBox, VMware, Hyper-V</li>
+                            </ul>
+                            <div className="mt-4 bg-black p-3 rounded border border-blue-500/30">
+                                <div className="text-[10px] text-gray-400 mb-1">Arquitectura</div>
+                                <div className="space-y-1 text-xs">
+                                    <div className="bg-slate-700 p-1 rounded text-center">Kali Linux VM</div>
+                                    <div className="bg-slate-700 p-1 rounded text-center">Windows VM</div>
+                                    <div className="bg-blue-600 p-1 rounded text-center font-bold">Hypervisor</div>
+                                    <div className="bg-slate-900 p-1 rounded text-center">Hardware Real</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* CONTAINERIZACIÓN */}
+                        <div className="bg-slate-800 p-5 rounded-xl border-l-4 border-green-500">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Cpu className="text-green-400" />
+                                <h4 className="font-bold text-green-400">Containerización</h4>
+                            </div>
+                            <ul className="text-sm text-gray-300 space-y-2">
+                                <li>• Comparte el kernel del OS host</li>
+                                <li>• Solo aísla procesos y archivos</li>
+                                <li>• Más ligero y rápido</li>
+                                <li>• Consume menos recursos</li>
+                                <li>• Ejemplos: Docker, Podman, LXC</li>
+                            </ul>
+                            <div className="mt-4 bg-black p-3 rounded border border-green-500/30">
+                                <div className="text-[10px] text-gray-400 mb-1">Arquitectura</div>
+                                <div className="space-y-1 text-xs">
+                                    <div className="bg-slate-700 p-1 rounded text-center">App Container 1</div>
+                                    <div className="bg-slate-700 p-1 rounded text-center">App Container 2</div>
+                                    <div className="bg-green-600 p-1 rounded text-center font-bold">Docker Engine</div>
+                                    <div className="bg-slate-900 p-1 rounded text-center">Linux Kernel</div>
+                                    <div className="bg-slate-900 p-1 rounded text-center">Hardware Real</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-yellow-900/30 border border-yellow-600/50 p-4 rounded-lg">
+                        <div className="flex items-start gap-3">
+                            <AlertTriangle className="text-yellow-500 flex-shrink-0 mt-1" />
+                            <div className="text-sm text-yellow-200">
+                                <strong>¿Cuál usar para Hacking?</strong> Para aprender ciberseguridad, usa <strong>Hypervisor (VirtualBox/VMware)</strong>.
+                                Te da un sistema operativo completo e independiente. Docker es genial para desarrollo, pero no para pentesting inicial.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        },
+        // 4. TIPOS DE HYPERVISORS
+        {
+            id: 'hypervisor-types',
+            title: 'Tipos de Hypervisors',
+            subtitle: 'Type 1 (Bare Metal) vs Type 2 (Hosted)',
+            icon:
+                <Cpu size={48} className="text-purple-400" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-center text-gray-300">
+                        No todos los hypervisors funcionan igual. Hay dos tipos principales según cómo se relacionan con el hardware.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* TYPE 1 */}
+                        <div className="bg-slate-800 p-5 rounded-xl border-t-4 border-purple-500">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Server className="text-purple-400" size={24} />
+                                <h4 className="font-bold text-purple-400">Type 1 - Bare Metal</h4>
+                            </div>
+                            <p className="text-xs text-gray-400 mb-4">Se instala directamente sobre el hardware (sin OS intermedio)</p>
+
+                            <div className="bg-black p-3 rounded border border-purple-500/30 mb-4">
+                                <div className="space-y-1 text-xs">
+                                    <div className="bg-slate-700 p-2 rounded text-center">VM 1</div>
+                                    <div className="bg-slate-700 p-2 rounded text-center">VM 2</div>
+                                    <div className="bg-purple-600 p-2 rounded text-center font-bold">Hypervisor Type 1</div>
+                                    <div className="bg-slate-900 p-2 rounded text-center">Hardware Físico</div>
+                                </div>
+                            </div>
+
+                            <ul className="text-sm text-gray-300 space-y-2 mb-4">
+                                <li>✅ Máximo rendimiento</li>
+                                <li>✅ Usado en servidores empresariales</li>
+                                <li>✅ Más seguro y estable</li>
+                                <li>❌ Requiere hardware dedicado</li>
+                            </ul>
+
+                            <div className="bg-purple-900/20 p-3 rounded border border-purple-500/30">
+                                <div className="text-xs font-bold text-purple-300 mb-1">Ejemplos:</div>
+                                <div className="text-xs text-gray-300 space-y-1">
+                                    <div>• VMware ESXi (datacenters)</div>
+                                    <div>• Microsoft Hyper-V Server</div>
+                                    <div>• Proxmox VE</div>
+                                    <div>• Xen</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* TYPE 2 */}
+                        <div className="bg-slate-800 p-5 rounded-xl border-t-4 border-orange-500">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Terminal className="text-orange-400" size={24} />
+                                <h4 className="font-bold text-orange-400">Type 2 - Hosted</h4>
+                            </div>
+                            <p className="text-xs text-gray-400 mb-4">Se instala como aplicación sobre un OS existente</p>
+
+                            <div className="bg-black p-3 rounded border border-orange-500/30 mb-4">
+                                <div className="space-y-1 text-xs">
+                                    <div className="bg-slate-700 p-2 rounded text-center">VM Kali Linux</div>
+                                    <div className="bg-orange-600 p-2 rounded text-center font-bold">VirtualBox / VMware</div>
+                                    <div className="bg-blue-700 p-2 rounded text-center">Windows / macOS / Linux</div>
+                                    <div className="bg-slate-900 p-2 rounded text-center">Hardware Físico</div>
+                                </div>
+                            </div>
+
+                            <ul className="text-sm text-gray-300 space-y-2 mb-4">
+                                <li>✅ Fácil de instalar y usar</li>
+                                <li>✅ Ideal para aprendizaje</li>
+                                <li>✅ No requiere hardware dedicado</li>
+                                <li>❌ Menor rendimiento (capa extra)</li>
+                            </ul>
+
+                            <div className="bg-orange-900/20 p-3 rounded border border-orange-500/30">
+                                <div className="text-xs font-bold text-orange-300 mb-1">Ejemplos:</div>
+                                <div className="text-xs text-gray-300 space-y-1">
+                                    <div>• VirtualBox ⭐ (Gratis)</div>
+                                    <div>• VMware Workstation</div>
+                                    <div>• Parallels Desktop (Mac)</div>
+                                    <div>• QEMU</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-blue-900/30 border border-blue-600/50 p-4 rounded-lg">
+                        <div className="flex items-start gap-3">
+                            <CheckCircle className="text-blue-400 flex-shrink-0 mt-1" />
+                            <div className="text-sm text-blue-200">
+                                <strong>Para este curso usaremos Type 2</strong> porque es más accesible. VirtualBox o VMware te permiten
+                                tener tu Windows/Mac funcionando normalmente y abrir Kali Linux como si fuera otra aplicación.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        },
+        // 5. CONFIGURACIÓN DE VM
+        {
+            id: 'vm-configuration',
+            title: 'Recursos de una Máquina Virtual',
+            subtitle: 'RAM, CPU, Disco: ¿Cuánto asignar?',
+            icon:
+                <Activity size={48} className="text-teal-400" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-center text-gray-300">
+                        Cuando creas una VM, debes decidir cuántos recursos de tu PC real le vas a prestar. ¡Ojo! No puedes dar más de lo que tienes.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {/* RAM */}
+                        <div className="bg-slate-800 p-4 rounded-xl border-l-4 border-cyan-500">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Cpu className="text-cyan-400" size={20} />
+                                <h4 className="font-bold text-cyan-400">RAM (Memoria)</h4>
+                            </div>
+                            <div className="text-xs text-gray-300 space-y-2">
+                                <p>Es la memoria temporal donde se ejecutan los programas.</p>
+                                <div className="bg-black p-2 rounded">
+                                    <div className="text-cyan-300 font-bold mb-1">Recomendación:</div>
+                                    <div className="text-[10px] space-y-1">
+                                        <div>• Mínimo: 2 GB</div>
+                                        <div>• Recomendado: 4 GB</div>
+                                        <div>• Óptimo: 8 GB</div>
+                                    </div>
+                                </div>
+                                <p className="text-[10px] text-gray-500">
+                                    Si tu PC tiene 8GB, asigna máximo 4GB a la VM. Deja siempre la mitad para tu sistema host.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* CPU */}
+                        <div className="bg-slate-800 p-4 rounded-xl border-l-4 border-pink-500">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Activity className="text-pink-400" size={20} />
+                                <h4 className="font-bold text-pink-400">CPU (Procesador)</h4>
+                            </div>
+                            <div className="text-xs text-gray-300 space-y-2">
+                                <p>Los núcleos que realizan los cálculos.</p>
+                                <div className="bg-black p-2 rounded">
+                                    <div className="text-pink-300 font-bold mb-1">Recomendación:</div>
+                                    <div className="text-[10px] space-y-1">
+                                        <div>• Mínimo: 1 core</div>
+                                        <div>• Recomendado: 2 cores</div>
+                                        <div>• Óptimo: 4 cores</div>
+                                    </div>
+                                </div>
+                                <p className="text-[10px] text-gray-500">
+                                    Si tienes 4 cores, asigna 2. Nunca asignes todos o tu PC host se volverá lento.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* DISCO */}
+                        <div className="bg-slate-800 p-4 rounded-xl border-l-4 border-green-500">
+                            <div className="flex items-center gap-2 mb-3">
+                                <Server className="text-green-400" size={20} />
+                                <h4 className="font-bold text-green-400">Disco Duro</h4>
+                            </div>
+                            <div className="text-xs text-gray-300 space-y-2">
+                                <p>Espacio de almacenamiento para archivos y programas.</p>
+                                <div className="bg-black p-2 rounded">
+                                    <div className="text-green-300 font-bold mb-1">Recomendación:</div>
+                                    <div className="text-[10px] space-y-1">
+                                        <div>• Mínimo: 20 GB</div>
+                                        <div>• Recomendado: 40 GB</div>
+                                        <div>• Óptimo: 80 GB</div>
+                                    </div>
+                                </div>
+                                <p className="text-[10px] text-gray-500">
+                                    El disco virtual crece dinámicamente. Si asignas 80GB, no ocupa todo de inmediato.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-slate-800 p-4 rounded-xl">
+                        <h4 className="font-bold text-yellow-400 mb-3 flex items-center gap-2">
+                            <AlertTriangle size={20} />
+                            Ejemplo Práctico
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div className="bg-black p-3 rounded border border-red-500/30">
+                                <div className="text-red-400 font-bold mb-2">❌ Configuración Mala</div>
+                                <div className="text-xs text-gray-300 space-y-1">
+                                    <div>Tu PC: 8GB RAM, 4 cores</div>
+                                    <div className="text-red-300">Asignaste a VM: 8GB RAM, 4 cores</div>
+                                    <div className="text-[10px] text-gray-500 mt-2">
+                                        Resultado: Tu Windows/Mac se congela porque no le dejaste recursos.
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bg-black p-3 rounded border border-green-500/30">
+                                <div className="text-green-400 font-bold mb-2">✅ Configuración Buena</div>
+                                <div className="text-xs text-gray-300 space-y-1">
+                                    <div>Tu PC: 8GB RAM, 4 cores</div>
+                                    <div className="text-green-300">Asignaste a VM: 4GB RAM, 2 cores</div>
+                                    <div className="text-[10px] text-gray-500 mt-2">
+                                        Resultado: Ambos sistemas funcionan fluidos. Puedes alternar entre ellos.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-purple-900/30 border border-purple-600/50 p-3 rounded-lg">
+                        <div className="text-xs text-purple-200">
+                            <strong>💡 Tip Pro:</strong> Puedes cambiar estos valores después. Si notas que Kali va lento,
+                            apaga la VM y aumenta la RAM/CPU desde la configuración de VirtualBox/VMware.
+                        </div>
+                    </div>
+                </div>
+            )
+        },
+        // 6. DESCARGAS HIPERVISOR
         {
             id: 'downloads-hypervisor',
             title: 'Paso 1: El Motor (Hipervisor)',
@@ -141,7 +433,7 @@ const Presentation = () => {
                 </div>
             )
         },
-        // 4. DESCARGAS SISTEMAS OPERATIVOS
+        // 7. DESCARGAS SISTEMAS OPERATIVOS
         {
             id: 'downloads-os',
             title: 'Paso 2: El Sistema (La ISO)',
@@ -199,7 +491,7 @@ const Presentation = () => {
                 </div>
             )
         },
-        // 5. INTRODUCCIÓN A BASH
+        // 8. INTRODUCCIÓN A BASH
         {
             id: 'bash-intro',
             title: 'Paso 3: Dominando la Terminal',
@@ -271,7 +563,7 @@ const Presentation = () => {
                 </div>
             )
         },
-        // 6. GESTIÓN DE ARCHIVOS
+        // 9. GESTIÓN DE ARCHIVOS
         {
             id: 'files',
             title: 'Crear y Destruir',
@@ -318,7 +610,7 @@ const Presentation = () => {
                 </div>
             )
         },
-        // 7. LEER ARCHIVOS (NUEVO)
+        // 10. LEER ARCHIVOS
         {
             id: 'reading',
             title: 'Leer Contenidos',
@@ -366,7 +658,321 @@ const Presentation = () => {
                 </div>
             )
         },
-        // 8. PERMISOS Y SUDO
+        // 11. ESTRUCTURA DE DIRECTORIOS LINUX
+        {
+            id: 'linux-filesystem',
+            title: 'El Sistema de Archivos de Linux',
+            subtitle: 'Todo es un archivo',
+            icon:
+                <FolderOpen size={48} className="text-yellow-400" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-center text-gray-300">
+                        En Linux, todo está organizado desde una raíz única <code className="bg-slate-700 px-2 py-1 rounded">/</code>.
+                        No hay "C:" o "D:" como en Windows.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                            <div className="bg-slate-800 p-3 rounded-lg border-l-4 border-blue-500">
+                                <div className="font-mono text-blue-400 font-bold mb-1">/home</div>
+                                <p className="text-xs text-gray-300">
+                                    Carpetas personales de usuarios. Tu carpeta es <code>/home/kali</code>.
+                                    Aquí guardas tus archivos, scripts y proyectos.
+                                </p>
+                            </div>
+
+                            <div className="bg-slate-800 p-3 rounded-lg border-l-4 border-red-500">
+                                <div className="font-mono text-red-400 font-bold mb-1">/root</div>
+                                <p className="text-xs text-gray-300">
+                                    Carpeta del superusuario (administrador). Solo accesible con <code>sudo</code>.
+                                </p>
+                            </div>
+
+                            <div className="bg-slate-800 p-3 rounded-lg border-l-4 border-green-500">
+                                <div className="font-mono text-green-400 font-bold mb-1">/etc</div>
+                                <p className="text-xs text-gray-300">
+                                    Archivos de configuración del sistema. Aquí están los ajustes de red, usuarios, servicios, etc.
+                                </p>
+                            </div>
+
+                            <div className="bg-slate-800 p-3 rounded-lg border-l-4 border-purple-500">
+                                <div className="font-mono text-purple-400 font-bold mb-1">/usr/bin</div>
+                                <p className="text-xs text-gray-300">
+                                    Programas y comandos del sistema. Cuando escribes <code>nmap</code>, se ejecuta desde aquí.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <div className="bg-slate-800 p-3 rounded-lg border-l-4 border-cyan-500">
+                                <div className="font-mono text-cyan-400 font-bold mb-1">/tmp</div>
+                                <p className="text-xs text-gray-300">
+                                    Archivos temporales. Se borran al reiniciar. Útil para pruebas rápidas.
+                                </p>
+                            </div>
+
+                            <div className="bg-slate-800 p-3 rounded-lg border-l-4 border-orange-500">
+                                <div className="font-mono text-orange-400 font-bold mb-1">/var/log</div>
+                                <p className="text-xs text-gray-300">
+                                    Logs del sistema. Si algo falla, aquí encuentras los registros de errores.
+                                </p>
+                            </div>
+
+                            <div className="bg-slate-800 p-3 rounded-lg border-l-4 border-pink-500">
+                                <div className="font-mono text-pink-400 font-bold mb-1">/opt</div>
+                                <p className="text-xs text-gray-300">
+                                    Software opcional instalado manualmente (no desde repositorios oficiales).
+                                </p>
+                            </div>
+
+                            <div className="bg-slate-800 p-3 rounded-lg border-l-4 border-teal-500">
+                                <div className="font-mono text-teal-400 font-bold mb-1">/dev</div>
+                                <p className="text-xs text-gray-300">
+                                    Dispositivos de hardware (discos, USB, etc.). En Linux, ¡hasta el hardware es un archivo!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-black p-4 rounded-xl border border-gray-700 font-mono text-xs">
+                        <div className="text-gray-400 mb-2"># Ejemplo: Navegando por el sistema</div>
+                        <div className="space-y-1">
+                            <div className="flex gap-2">
+                                <span className="text-green-400">kali@kali:~$</span>
+                                <span className="text-white">cd /etc</span>
+                            </div>
+                            <div className="flex gap-2">
+                                <span className="text-green-400">kali@kali:/etc$</span>
+                                <span className="text-white">ls</span>
+                            </div>
+                            <div className="text-blue-400">passwd  hosts  network/  ssh/  ...</div>
+                            <div className="flex gap-2 mt-2">
+                                <span className="text-green-400">kali@kali:/etc$</span>
+                                <span className="text-white">cd ~</span>
+                                <span className="text-gray-500"># Vuelve a tu carpeta personal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-yellow-900/30 border border-yellow-600/50 p-3 rounded-lg">
+                        <div className="text-xs text-yellow-200">
+                            <strong>💡 Tip:</strong> El símbolo <code className="bg-slate-700 px-1 rounded">~</code> es un atajo para tu carpeta personal.
+                            <code className="bg-slate-700 px-1 rounded">cd ~</code> siempre te lleva a <code>/home/kali</code>.
+                        </div>
+                    </div>
+                </div>
+            )
+        },
+        // 12. PIPES Y REDIRECCIÓN
+        {
+            id: 'pipes-redirection',
+            title: 'Pipes y Redirección',
+            subtitle: 'Conectando comandos como LEGO',
+            icon:
+                <Search size={48} className="text-indigo-400" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-center text-gray-300">
+                        La verdadera magia de Linux: puedes conectar la salida de un comando con la entrada de otro.
+                        Esto te hace extremadamente eficiente.
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* PIPE */}
+                        <div className="bg-slate-800 p-5 rounded-xl border-t-4 border-indigo-500">
+                            <div className="flex items-center gap-2 mb-3">
+                                <ChevronRight className="text-indigo-400" />
+                                <h4 className="font-bold text-indigo-400">Pipe ( | )</h4>
+                            </div>
+                            <p className="text-xs text-gray-300 mb-3">
+                                Envía la salida de un comando como entrada al siguiente.
+                            </p>
+                            <div className="bg-black p-3 rounded font-mono text-xs space-y-3">
+                                <div>
+                                    <div className="text-gray-400 mb-1"># Buscar palabra en archivo largo</div>
+                                    <div className="text-white">cat usuarios.txt | grep "admin"</div>
+                                    <div className="text-gray-500 text-[10px] mt-1">
+                                        Lee el archivo y filtra solo líneas con "admin"
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="text-gray-400 mb-1"># Ver procesos de Firefox</div>
+                                    <div className="text-white">ps aux | grep firefox</div>
+                                </div>
+                                <div>
+                                    <div className="text-gray-400 mb-1"># Contar líneas de un archivo</div>
+                                    <div className="text-white">cat log.txt | wc -l</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* REDIRECCIÓN */}
+                        <div className="bg-slate-800 p-5 rounded-xl border-t-4 border-green-500">
+                            <div className="flex items-center gap-2 mb-3">
+                                <FileText className="text-green-400" />
+                                <h4 className="font-bold text-green-400">Redirección ( {'>'} {'>>'}  )</h4>
+                            </div>
+                            <p className="text-xs text-gray-300 mb-3">
+                                Guarda la salida de un comando en un archivo.
+                            </p>
+                            <div className="bg-black p-3 rounded font-mono text-xs space-y-3">
+                                <div>
+                                    <div className="text-gray-400 mb-1"># Sobrescribir archivo</div>
+                                    <div className="text-white">echo "Hola" {'>'} saludo.txt</div>
+                                    <div className="text-gray-500 text-[10px] mt-1">
+                                        Crea o reemplaza el archivo
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="text-gray-400 mb-1"># Agregar al final (append)</div>
+                                    <div className="text-white">echo "Mundo" {'>>'} saludo.txt</div>
+                                    <div className="text-gray-500 text-[10px] mt-1">
+                                        Añade sin borrar lo anterior
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="text-gray-400 mb-1"># Guardar resultado de escaneo</div>
+                                    <div className="text-white">nmap 192.168.1.1 {'>'} scan.txt</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-slate-800 p-4 rounded-xl">
+                        <h4 className="font-bold text-purple-400 mb-3">🔥 Ejemplo Avanzado: Combinando Todo</h4>
+                        <div className="bg-black p-4 rounded font-mono text-xs">
+                            <div className="text-gray-400 mb-2"># Encuentra IPs activas, filtra solo las IPs y guárdalas</div>
+                            <div className="text-white mb-3">
+                                nmap -sn 192.168.1.0/24 | grep "Nmap scan" | cut -d " " -f 5 {'>'} ips_activas.txt
+                            </div>
+                            <div className="text-gray-500 text-[10px] space-y-1">
+                                <div>1. <code>nmap -sn</code> escanea la red</div>
+                                <div>2. <code>| grep</code> filtra solo líneas con IPs encontradas</div>
+                                <div>3. <code>| cut</code> extrae solo la columna de la IP</div>
+                                <div>4. <code>{'>'}</code> guarda todo en un archivo</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-blue-900/30 border border-blue-600/50 p-3 rounded-lg">
+                        <div className="text-xs text-blue-200">
+                            <strong>¿Por qué es importante?</strong> En pentesting, procesarás MILES de líneas de logs, escaneos y resultados.
+                            Dominar pipes te ahorra horas de trabajo manual.
+                        </div>
+                    </div>
+                </div>
+            )
+        },
+        // 13. GESTORES DE PAQUETES
+        {
+            id: 'package-managers',
+            title: 'Instalando Software en Linux',
+            subtitle: 'APT: Tu tienda de aplicaciones',
+            icon:
+                <Download size={48} className="text-green-400" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-center text-gray-300">
+                        En Linux no descargas .exe de páginas web. Usas un <strong>gestor de paquetes</strong> que instala,
+                        actualiza y elimina software de forma segura.
+                    </p>
+
+                    <div className="bg-slate-800 p-5 rounded-xl border-l-4 border-green-500">
+                        <div className="flex items-center gap-2 mb-3">
+                            <Download className="text-green-400" />
+                            <h4 className="font-bold text-green-400">APT (Advanced Package Tool)</h4>
+                        </div>
+                        <p className="text-xs text-gray-300 mb-4">
+                            El gestor de paquetes de Kali Linux (basado en Debian). Descarga software desde repositorios oficiales verificados.
+                        </p>
+
+                        <div className="space-y-3">
+                            <div className="bg-black p-3 rounded">
+                                <div className="font-mono text-sm text-cyan-400 mb-1">sudo apt update</div>
+                                <p className="text-[10px] text-gray-400">
+                                    Actualiza la lista de paquetes disponibles. <strong>Hazlo siempre primero.</strong>
+                                </p>
+                            </div>
+
+                            <div className="bg-black p-3 rounded">
+                                <div className="font-mono text-sm text-green-400 mb-1">sudo apt upgrade</div>
+                                <p className="text-[10px] text-gray-400">
+                                    Actualiza todos los programas instalados a su última versión.
+                                </p>
+                            </div>
+
+                            <div className="bg-black p-3 rounded">
+                                <div className="font-mono text-sm text-blue-400 mb-1">sudo apt install nmap</div>
+                                <p className="text-[10px] text-gray-400">
+                                    Instala el programa "nmap". Reemplaza con cualquier herramienta que necesites.
+                                </p>
+                            </div>
+
+                            <div className="bg-black p-3 rounded">
+                                <div className="font-mono text-sm text-red-400 mb-1">sudo apt remove nmap</div>
+                                <p className="text-[10px] text-gray-400">
+                                    Desinstala el programa. Usa <code>purge</code> en vez de <code>remove</code> para borrar también configuraciones.
+                                </p>
+                            </div>
+
+                            <div className="bg-black p-3 rounded">
+                                <div className="font-mono text-sm text-purple-400 mb-1">apt search metasploit</div>
+                                <p className="text-[10px] text-gray-400">
+                                    Busca paquetes relacionados con "metasploit" en los repositorios.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-slate-800 p-4 rounded-xl border border-yellow-500/30">
+                            <h4 className="font-bold text-yellow-400 mb-2 flex items-center gap-2">
+                                <AlertTriangle size={18} />
+                                Rutina Recomendada
+                            </h4>
+                            <div className="bg-black p-3 rounded font-mono text-xs space-y-1">
+                                <div className="text-gray-400"># Cada vez que inicies Kali:</div>
+                                <div className="text-white">sudo apt update</div>
+                                <div className="text-white">sudo apt upgrade -y</div>
+                                <div className="text-gray-500 text-[10px] mt-2">
+                                    El <code>-y</code> acepta automáticamente las actualizaciones
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="bg-slate-800 p-4 rounded-xl border border-blue-500/30">
+                            <h4 className="font-bold text-blue-400 mb-2">Otros Gestores</h4>
+                            <div className="text-xs text-gray-300 space-y-2">
+                                <div>
+                                    <strong className="text-orange-400">pip</strong> - Para instalar herramientas de Python
+                                    <div className="font-mono text-[10px] bg-black p-1 rounded mt-1">pip install requests</div>
+                                </div>
+                                <div>
+                                    <strong className="text-red-400">gem</strong> - Para herramientas de Ruby
+                                    <div className="font-mono text-[10px] bg-black p-1 rounded mt-1">gem install wpscan</div>
+                                </div>
+                                <div>
+                                    <strong className="text-green-400">git</strong> - Para clonar repositorios de GitHub
+                                    <div className="font-mono text-[10px] bg-black p-1 rounded mt-1">git clone https://...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-red-900/30 border border-red-600/50 p-3 rounded-lg">
+                        <div className="flex items-start gap-2">
+                            <AlertTriangle className="text-red-400 flex-shrink-0 mt-1" size={18} />
+                            <div className="text-xs text-red-200">
+                                <strong>¡Nunca hagas esto!</strong> No descargues herramientas de hacking desde sitios random.
+                                Usa siempre <code>apt</code> o el repositorio oficial de GitHub. Muchos "cracks" y "tools gratis" son malware.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        },
+        // 14. PERMISOS Y SUDO
         {
             id: 'permissions',
             title: 'Permisos y Root',
@@ -428,7 +1034,7 @@ const Presentation = () => {
                 </div>
             )
         },
-        // 9. PROCESOS
+        // 15. PROCESOS
         {
             id: 'processes',
             title: 'Control de Procesos',
@@ -484,7 +1090,7 @@ const Presentation = () => {
                 </div>
             )
         },
-        // 10. REDES
+        // 16. REDES
         {
             id: 'networks',
             title: 'Redes Básicas',
@@ -523,7 +1129,7 @@ const Presentation = () => {
                 </div>
             )
         },
-        // 11. OUTRO
+        // 17. OUTRO
         {
             id: 'outro',
             title: '¡Misión Cumplida!',
